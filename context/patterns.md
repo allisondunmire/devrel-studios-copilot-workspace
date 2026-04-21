@@ -11,5 +11,7 @@
 ## Skill Candidates
 <!-- Patterns ready to be turned into reusable skills -->
 
+- **Shoot-type email template → calendar invite** — Each shoot type has a corresponding email template whose content currently has to be manually copy/pasted into the matching calendar invite. *Why it matters:* High-frequency, error-prone manual step tied to the `drstudios@microsoft.com` calendar workflow. Strong fit for a Power Automate flow (trigger on invite creation → look up template by shoot type → populate invite body) or an Outlook Quick Step / template mapping. Flagged during setup-interview 2026-04-21.
+
 ## Promoted to Skills
 <!-- Patterns that became skills — kept here for history -->

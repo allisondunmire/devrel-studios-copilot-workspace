@@ -3,5 +3,28 @@
     "*": true,
     "markdown": true
   },
-  "github.copilot.chat.localeOverride": "en"
+  "github.copilot.chat.localeOverride": "en",
+  "mcp": {
+    "servers": {
+      "github": {
+        "type": "http",
+        "url": "https://api.githubcopilot.com/mcp/"
+      },
+      "work-iq": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@microsoft/workiq@latest", "mcp"]
+      },
+      "ado": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@azure-devops/mcp", "devrel"]
+      },
+      "filesystem": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "${userHome}"]
+      }
+    }
+  }
 }
