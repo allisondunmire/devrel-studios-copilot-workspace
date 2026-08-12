@@ -1,7 +1,8 @@
 # DevRel Studios — Quick Reference
 
-> Full wiki: `[path to your local Studios.wiki clone]`
-> Read the wiki directly when you need detailed workflows, templates, or policies.
+> Full wiki (local clone): `../studio-wiki/` — read these files directly for detailed workflows, templates, and policies
+> Remote: https://devrel@dev.azure.com/devrel/Studios/_git/Studios.wiki
+> Update with: `cd studio-wiki && git pull`
 
 ## What is DevRel Studios?
 

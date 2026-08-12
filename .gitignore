@@ -6,3 +6,6 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Nested external repos
+studio-wiki/

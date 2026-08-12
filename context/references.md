@@ -1,6 +1,7 @@
 # References
 
 ## Team Resources
+- [DevRel Studios Wiki](https://devrel@dev.azure.com/devrel/Studios/_git/Studios.wiki) — full studio documentation (ADO Git wiki)
 - [Copilot Workspace Template](https://github.com/microsoft/DevRelStudiosTeamAI) — this repo
 - Team skills repo — TBD (will live under manager's GitHub)
 
