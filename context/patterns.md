@@ -16,7 +16,8 @@
 
 - **Recurring OneNote daily page automation** — Daily to-do pages in the "Allison @ Microsoft" notebook need to be created each weekday, copied from the prior day, following a nested section-group naming convention (`TO DO LIST → year → M##_Month → W#_range → day pages`). *Why it matters:* Repetitive daily manual step; strong Power Automate + Microsoft Graph fit. Full build guide drafted at [projects/onenote-daily-flow.md](../projects/onenote-daily-flow.md). Key gotcha: week sections are manually curated around holidays, so auto-naming is best-effort and locates sections by ID. Flagged 2026-07-28.
 
-- **Shoot-type email template → calendar invite** — Each shoot type has a corresponding email template whose content currently has to be manually copy/pasted into the matching calendar invite. *Why it matters:* High-frequency, error-prone manual step tied to the `drstudios@microsoft.com` calendar workflow. Strong fit for a Power Automate flow (trigger on invite creation → look up template by shoot type → populate invite body) or an Outlook Quick Step / template mapping. Flagged during setup-interview 2026-04-21.
-
 ## Promoted to Skills
 <!-- Patterns that became skills — kept here for history -->
+
+- **Weekly WIP agenda reconciliation** — Promoted to [`skills/wip-onenote-update/`](../skills/wip-onenote-update/) on 2026-08-26. The skill previews a merge of top-level ADO projects and categorized DRStudios recording sessions into the existing Development & In Planning format while preserving handwritten notes. A Microsoft List is the preferred future destination because direct OneNote access is unavailable through Work IQ.
+- **Live Show Excel → DRStudios calendar appointments** — Promoted to [`skills/live-show-calendar/`](../skills/live-show-calendar/) on 2026-08-17. The skill reads the `LiveShow` table, applies session-type setup buffers, previews and checks duplicates, and creates no-attendee appointments in `drstudios@microsoft.com` only after explicit approval. Originated from the shoot-type template/calendar invite candidate flagged 2026-04-21.

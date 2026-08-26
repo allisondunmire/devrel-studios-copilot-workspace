@@ -8,7 +8,11 @@
 
 ## Workflow Tips
 
+- **Use Microsoft Lists for the weekly WIP tracker** — The recurring agenda is structured operational data (ADO project, EP, type, recording dates, location, state, and meeting notes), while Work IQ cannot currently read or update the OneNote page. *Why it matters:* A SharePoint-backed List gives each project a stable row, supports filtered meeting views and Power Automate, preserves manual notes in a dedicated field, and can retain clickable ADO links.
+
 ## Tool Tips
+
+- **Microsoft Scout can prototype the WIP automation** — Internal Scout guidance documents browser control, file and shell operations, Microsoft 365/Work IQ access, and scheduled automations, but a native Power Automate flow-authoring capability was not verified. *Why it matters:* Use Scout for a supervised List and workflow prototype after sign-in, then choose Scout scheduling or translate the proven process into Power Automate.
 
 - **Standard Outlook connector can read the DRStudios shared calendar** — `Get calendar view of events (V3)` successfully queried only `drstudios@microsoft.com`, while the Outlook `Send an HTTP request` action was blocked by DLP with status 442. *Why it matters:* Shared-calendar availability and event creation are possible without the blocked HTTP/Graph connector or personal-calendar access.
 - **SharePoint Choice fields are objects in Power Automate** — Stage and Status often require their nested `Value` property, such as `item()?['Stage']?['Value']`. *Why it matters:* Comparing the whole object to text silently produces empty filters and incorrect availability.
