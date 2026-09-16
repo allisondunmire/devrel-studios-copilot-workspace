@@ -1,0 +1,13 @@
+{
+  "$schema": "../../schemas/plugin-manifest.schema.json",
+  "name": "@microsoft/copilot-plugin-devrel-studios",
+  "version": "0.5.0",
+  "description": "GitHub Copilot plugin for DevRel Studios video production and publishing workflows.",
+  "files": [
+    "plugin.json",
+    "README.md",
+    ".mcp.json",
+    "skills",
+    "scripts"
+  ]
+}

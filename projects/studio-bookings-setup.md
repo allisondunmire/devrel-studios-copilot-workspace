@@ -3,7 +3,7 @@
 - **Status:** active
 - **Due:** ongoing
 - **Owner:** me
-- **Last updated:** 2026-08-11
+- **Last updated:** 2026-09-15
 
 ## What
 Build a Bookings-style studio request experience for internal and external users. Availability comes only from `drstudios@microsoft.com`; Busy meetings and appointments block time, and no personal calendar data is used. Requests require manual approval before a Busy appointment with no attendees is created on the studio calendar.
@@ -39,6 +39,10 @@ Build a Bookings-style studio request experience for internal and external users
 - **Process Studio Booking Decision:** triggers on create/modify, routes Approved/Declined, uses ApprovalProcessed to prevent duplicate work, rechecks DRStudios, creates the no-attendee Busy appointment, stores OutlookEventID, or releases the slot for Declined/Conflict.
 
 ## Progress
+- [x] Created the DevRel Studios `Rehearsal Scheduling` Microsoft List for Phase 1 rehearsal coordination
+- [x] Created and externally tested the group-owned `MVP Rehearsal Availability` Form
+- [x] Standardized submitted availability on 8:00 AM-5:00 PM Pacific Time while retaining the MVP's local time zone
+- [ ] Build `Rehearsal - Capture MVP Availability` in Power Automate
 - [x] Standard Outlook connector can read the DevRel Studios Service Account calendar
 - [x] Busy meetings and appointments are omitted from availability
 - [x] Dynamic date generation and Pacific/UTC conversion tested
@@ -56,6 +60,9 @@ Build a Bookings-style studio request experience for internal and external users
 - [ ] Build external Power Pages site
 
 ## Next Steps
+- [ ] Resume at Power Automate: create `Rehearsal - Capture MVP Availability` using the Microsoft Forms response trigger
+- [ ] Build the remaining Phase 1 rehearsal flows for request email, ADO intake, approval, conflict recheck, and DRStudios booking
+- [ ] Submit a formal tenant-review request for Phase 2 managed-identity calendar access after the reviewer mailbox scope is defined
 - [ ] Run a controlled Declined-path test: linked slot returns to Available Yes, ApprovalProcessed becomes Yes, and no appointment is created
 - [ ] Add Pending, Approved, Declined, and Conflict email notifications
 - [ ] Build and test the internal request page
@@ -64,6 +71,9 @@ Build a Bookings-style studio request experience for internal and external users
 - [ ] Resolve stage/category behavior before production: a stage-specific approved Busy appointment currently risks blocking all three stages during availability regeneration
 
 ## Notes
+- **Rehearsal Phase 1:** A Microsoft List stores structured scheduling data, Microsoft Forms collects external MVP availability, and `drstudios@microsoft.com` remains the calendar used for conflict checks and rehearsal event creation.
+- **Rehearsal form:** The reusable group form accepts anonymous responses, asks for availability in Pacific Time, separately records the MVP's local time zone, and was validated in an InPrivate browser session.
+- **Phase 2 identity:** Existing Logic App Standard `dsautomation-la1` workflows use its system-assigned managed identity. Graph `getSchedule` access requires formal tenant review and scoped Exchange RBAC; request least-privileged calendar access and persist only free/busy status.
 - **DLP:** Office 365 Outlook `Send an HTTP request` failed with status 442. `Get calendar view of events (V3)` works and exposes the DRStudios shared calendar in its Calendar ID picker.
 - **Choice fields:** SharePoint Stage and Status values are objects in flow output; use `item()?['Stage']?['Value']` and `body('Get_current_booking')?['Status']?['Value']`.
 - **Date handling:** Create event (V4) requires date-no-timezone values. Convert UTC SharePoint values to `Pacific Standard Time` and select `(UTC-08:00) Pacific Time (US & Canada)` so daylight-saving time is handled.
@@ -93,6 +103,7 @@ Build a Bookings-style studio request experience for internal and external users
 - [Exchange admin center](https://admin.exchange.microsoft.com)
 
 ## Log
+- **2026-09-15** — Started the operator-assisted rehearsal scheduling build. Created the SharePoint list and team-owned external availability form, verified anonymous submission, and paused before creating the first Power Automate response-capture flow. Confirmed that Phase 2 can use the Logic App system-assigned managed identity after formal scoped calendar authorization.
 - **2026-08-11** — Pivoted active design to SharePoint + Power Automate with separate internal and external request surfaces. Built and validated availability, request reservation, calendar recheck, conflict handling, and approved no-attendee DRStudios appointments. Next: full Declined test, notifications, and internal page.
 - **2026-07-10** — Designed architecture (3 room mailboxes as staff, operator as separate layer). Created stageA/B/C room mailboxes. Confirmed Bookings license + reuse of existing DevRel Studios page. Hit "No results found" adding staff (was creating a Guest); switching to Search Directory. Paused ~60 min for mailbox propagation to the staff picker.
 - **2026-07-10** — After propagation, successfully added all 3 rooms as staff/team members via Search Directory. Next: create the "Studio Recording Session" service.

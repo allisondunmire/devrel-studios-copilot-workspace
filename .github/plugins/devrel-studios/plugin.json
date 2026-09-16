@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schemas/plugin.schema.json",
+  "name": "devrel-studios",
+  "description": "DevRel Studios video production and publishing workflows for GitHub Copilot CLI.",
+  "version": "0.5.0",
+  "skills": [
+    "skills/"
+  ],
+  "mcpServers": ".mcp.json"
+}

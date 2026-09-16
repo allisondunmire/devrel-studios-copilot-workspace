@@ -7,22 +7,25 @@
 ## HTML body
 
 ```html
-<p><strong>** This email is generated from a service account that is not regularly monitored. For rescheduling or questions, please email v-adunmire@microsoft.com **</strong></p>
+<div style="font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#000000;line-height:1.2;">
+<p style="margin:0 0 16px 0;padding:2px 6px;background-color:#d9d9d9;"><strong><em>** This email is generated from a service account that is not regularly monitored. For rescheduling or questions, please email <a href="mailto:v-adunmire@microsoft.com">v-adunmire@microsoft.com</a>. **</em></strong></p>
 
-<p><strong>IMPORTANT INFORMATION - PLEASE READ THOROUGHLY:</strong></p>
+<p style="margin:0 0 4px 0;"><strong>IMPORTANT INFORMATION - PLEASE READ THOROUGHLY:</strong></p>
 <ul>
   <li>This session will be streaming live with hosts in studio and presenters via Teams NDI.</li>
   <li>Call Times for Presenters are listed below. <em>Be sure to log into Teams at least 20 minutes prior to your live session start time.</em></li>
   <li>Please come prepared with your demo, slides, or presentation (if applicable).</li>
 </ul>
 
-<p><strong>Details:</strong></p>
-<table>
+<p style="margin:18px 0 4px 0;color:#2f5597;font-size:14pt;"><strong>Details:</strong></p>
+<table role="presentation" border="1" cellpadding="4" cellspacing="0" style="border-collapse:collapse;border:1px solid #000000;width:804px;max-width:100%;">
   <tr><td><strong>Event</strong></td><td>{{Event Name}}</td></tr>
   <tr><td><strong>Session title</strong></td><td>{{Session Name}}</td></tr>
   <tr><td><strong>Presenter(s)</strong></td><td>{{Presenter(s)}}</td></tr>
   <tr><td><strong>Presenter(s) Call time</strong></td><td>{{Appointment Start Time}}</td></tr>
   <tr><td><strong>Session start time</strong></td><td>{{Session Start Time}}</td></tr>
+  <tr><td><strong>Session end time</strong></td><td>{{Session End Time}}</td></tr>
+  <tr><td><strong>Session length</strong></td><td>{{Session Duration}}</td></tr>
   <tr><td><strong>Location</strong></td><td>Teams NDI</td></tr>
   <tr><td><strong>Show Owner</strong></td><td>{{Show Owner}}</td></tr>
   <tr><td><strong>Executive Producer</strong></td><td>{{Executive Producer}}</td></tr>
@@ -35,7 +38,7 @@
   <li>Need access? <strong>CoreIdentity Entitlements for ADO access:</strong> <a href="https://coreidentity.microsoft.com/manage/Entitlement/entitlement/studiosadopr-gyl1">Studios ADO Entitlement</a></li>
 </ul>
 
-<p><strong>Live presenters - remote via Teams:</strong></p>
+<p style="margin:18px 0 4px 0;color:#2f5597;font-size:14pt;"><strong>Live presenters - remote via Teams:</strong></p>
 <ul>
   <li>Join the Teams call 20 minutes ahead of your live session start time. Someone from the production team will be with you shortly to check your screen share/video/audio.</li>
   <li>If multiple presenters, inform the Executive Producer (EP) or Technical Director (TD) who will be speaking first and who will be sharing the presentation and/or demo so we understand the flow of your session.</li>
@@ -47,7 +50,7 @@
   <li>When you are finished with your session/Q&amp;A, mute your microphone, keep your camera ON, and do not stop sharing your screen until given the all-clear from the production team. They will let you know when you are clear to exit the Teams call.</li>
 </ul>
 
-<p><strong>Setup instructions (if you plan to share your screen):</strong></p>
+<p style="margin:18px 0 4px 0;color:#2f5597;font-size:14pt;"><strong>Setup instructions (if you plan to share your screen):</strong></p>
 <ul>
   <li>Set your screen resolution to 1920x1080.</li>
   <li>Set your scale to 125%: System &gt; Display &gt; Scale &amp; layout.</li>
@@ -63,7 +66,7 @@
   <li>If you are not a Microsoft employee, please sign the <a href="https://aka.ms/releaseforms">release form</a>.</li>
 </ul>
 
-<p><strong>Video &amp; Audio</strong></p>
+<p style="margin:18px 0 4px 0;color:#2f5597;font-size:14pt;"><strong>Video &amp; Audio:</strong></p>
 <p><strong>Set up:</strong></p>
 <ul>
   <li>Choose a quiet location with great internet connectivity, preferably hard wired, free from noise from pets or children.</li>
@@ -94,21 +97,9 @@
   <li>If using a mobile device, use something to stabilize it.</li>
 </ul>
 
-<p><strong>Wardrobe Tips</strong></p>
-<p><strong>Do:</strong></p>
-<ul>
-  <li>Wear color. Muted colors are fine; color is always good on camera.</li>
-  <li>Ensure your clothes are wrinkle free; HD catches everything.</li>
-  <li>Wear simple jewelry, or none. Large jewelry can be distracting and create additional noise.</li>
-</ul>
-
-<p><strong>Don&rsquo;t:</strong></p>
-<ul>
-  <li>Wear large-logo shirts or non-Microsoft logos unless related to your technology topic.</li>
-  <li>Wear shirts with a busy print or tight pattern.</li>
-  <li>Wear solid black, solid white, or any green.</li>
-  <li>Wear hats unless worn for religious observance.</li>
-</ul>
+<p style="margin:18px 0 4px 0;color:#2f5597;font-size:14pt;"><strong>Wardrobe tips</strong></p>
+<p>Avoid large logos, busy or tight patterns, solid black or white, and hats unless worn for religious observance. Wear color, wrinkle-free clothing, and simple jewelry.</p>
+</div>
 ```
 
 ## Placeholder rules
@@ -116,3 +107,5 @@
 - HTML-escape all workbook values before insertion.
 - Preserve line breaks in multi-line values with `<br>`.
 - Render appointment and session times in Pacific Time using a readable 12-hour format such as `8:45 AM PT`.
+- Apply the inline styles as written; do not replace them with CSS classes or a `<style>` block because
+  Outlook desktop uses the Word HTML rendering engine.

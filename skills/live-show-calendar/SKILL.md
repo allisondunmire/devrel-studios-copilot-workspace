@@ -1,12 +1,12 @@
 ---
 name: live-show-calendar
 description: >
-  Preview and create DRStudios Outlook calendar appointments and tech-check invitations from the Live Show worksheet in
-  a SharePoint or OneDrive Excel run-of-show workbook. Use when the user asks to turn a ROS,
-  run of show, LiveShow table, or Excel schedule into calendar blocks, tech checks, or appointments in
-  drstudios@microsoft.com. Routes Teams NDI, In Studio, and Hybrid rows to their session-type
-  templates, applies setup buffers, checks for duplicates, and always requires explicit approval
-  before calendar writes.
+  Preview, create, and update DRStudios Outlook calendar appointments and invitations from a SharePoint or OneDrive
+  Excel run-of-show workbook. Use when the user asks to turn a ROS, run of show, LiveShow table, or Excel schedule into
+  calendar blocks; correct session times; add presenters or production attendees; enable Teams links and response
+  tracking; apply Outlook categories; or manage tech checks in drstudios@microsoft.com. Routes Teams NDI, In Studio,
+  and Hybrid rows to their session-type templates, applies setup buffers, checks for duplicates, and always requires
+  explicit approval before calendar writes.
 ---
 
 # Live Show Calendar Appointments
@@ -25,6 +25,13 @@ For each run, require:
 
 Do not reuse rows, dates, event IDs, presenters, or times from a previous workbook. Always reread
 the supplied workbook and create a fresh preview.
+
+If the user identifies a different worksheet or table as authoritative, such as a draft sheet,
+inspect that source and explicitly confirm the override in the preview. Do not combine rows from
+the default and override sources or silently fall back to a stale sheet. If qualifying rows have
+blank Session IDs, keep them blocked unless the user explicitly approves a deterministic ID
+assignment. Assign approved IDs chronologically from the next unused ID and report that the
+workbook itself remains unchanged.
 
 ## Source columns
 
@@ -113,6 +120,21 @@ data:
 | `In Studio` | [references/in-studio-template.md](references/in-studio-template.md) |
 | `Hybrid` | [references/hybrid-template.md](references/hybrid-template.md) |
 
+Send each rendered body as Graph HTML (`body.contentType: html`). Preserve the templates' inline
+styles, table attributes, links, and semantic HTML exactly; do not convert the body to Markdown or
+plain text. The inline formatting is intentionally compatible with Outlook desktop's Word HTML
+renderer as well as Outlook on the web.
+
+In every livestream-session body, render `Session End Time` in the confirmed event time zone and
+render `Session Length` from the displayed `Session Duration` workbook value. If `Session Duration`
+is blank, derive it from the validated session start and end times and identify it as derived in the
+preview. Never calculate session length from the buffered appointment start time.
+
+`Floor Plan Image URL` is an optional skill-level resource, not required workbook metadata. When a
+confirmed HTTPS image URL is available, render it in `In Studio` and `Hybrid` invitations only.
+Until then, remove the entire floor-plan image paragraph from the rendered HTML. Never leave the
+placeholder in an invitation, invent a URL, or include the floor plan in `Teams NDI` invitations.
+
 ### Tech check templates
 
 Tech checks are separate calendar items from livestream-session appointments. Do not apply the
@@ -146,7 +168,7 @@ For every tech check, require an explicit date, start time, end time, time zone,
 The source workbook may provide them, but do not infer a tech-check schedule from the live-session
 times. Preview the subject, date, start, end, location, required attendees, optional attendees, and
 conflicts before requesting approval. State that approval will send invitations from
-`drstudios@microsoft.com`.
+`drstudios@microsoft.com`. Set `responseRequested: true` whenever the attendee list is non-empty.
 
 For Hybrid rows, compute both call times: `Appointment Start Time` is 30 minutes before the
 session and `Remote Call Time` is 20 minutes before the session. The calendar appointment starts
@@ -173,9 +195,14 @@ Use:
 - Location: `Stage Location`
 - Show as: `busy`
 - Attendees: empty
-- Response requested: `false`
+- Response requested: `false` only while the event has no attendees
 - Reminder: 15 minutes before the computed appointment start
 - Transaction ID: `drstudios-live-show-<YYYY-MM-DD>-<Session ID>`
+
+Response tracking is mandatory for every invitation sent from `drstudios@microsoft.com`. Whenever
+an event is created with attendees or attendees are added to an existing attendee-free appointment,
+explicitly set `responseRequested: true` in the same approved write. Do not rely on the service
+default. Include the response-request setting in the preview and verify it by direct event fetch.
 
 ### 5. Check existing calendar items
 
@@ -221,8 +248,10 @@ stop the batch and report exactly which Session IDs succeeded, failed, and were 
 ### 8. Verify
 
 Re-read the DRStudios calendar for the event date and verify each newly created event's subject,
-start, end, time zone, location, and lack of attendees. Return a concise result table with the
-event links. Do not modify the source workbook or mark rows as sent.
+start, end, time zone, location, attendees, and `responseRequested` value. An attendee-free event
+must have `responseRequested: false`; an event with one or more attendees must have
+`responseRequested: true`. Return a concise result table with the event links. Do not modify the
+source workbook or mark rows as sent.
 
 ## Updating existing appointments
 
@@ -231,10 +260,75 @@ appointment. Locate existing events by returned event ID first, deterministic tr
 second, and exact Session ID/date/time match third. Never identify an event by time alone.
 
 Show the proposed subject and body changes and obtain explicit approval before updating. Patch
-only the approved fields; preserve start, end, time zone, location, attendees, reminder, and
-busy status unless the user explicitly approves changes to them. Verify every updated event by
-direct event fetch after the write. Never create a replacement event when the intended existing
-event cannot be identified uniquely.
+only the approved fields; preserve start, end, time zone, location, attendees, `responseRequested`,
+reminder, and busy status unless the user explicitly approves changes to them. A subject- or
+body-only update must not disable response tracking or reset attendee response statuses. Verify
+every updated event, including its `responseRequested` value, by direct event fetch after the write.
+Never create a replacement event when the intended existing event cannot be identified uniquely.
+
+When an approved update adds the first attendee to an attendee-free appointment, include
+`responseRequested: true` in that update and show it in the preview. When modifying any existing
+meeting with attendees, verify that `responseRequested` is true; if it is false, report the issue
+and obtain explicit approval before enabling it because that correction can send meeting updates.
+
+### Correcting the schedule
+
+When the user changes event or session timing, preview every affected appointment's current and
+proposed start and end in the confirmed time zone. Shift the rendered call times, remote call times,
+session start times, and session times in the HTML body by the same amount. Preserve all unrelated
+body content and event fields. Warn that changing a meeting that already has attendees can send an
+update; attendee-free appointments do not send invitations. Fetch each event immediately before
+the approved update, use its latest ETag, patch only `start`, `end`, and `body`, and verify both the
+calendar window and all displayed body times.
+
+### Adding attendees to livestream sessions
+
+When the user explicitly asks to send existing livestream appointments, build required and optional
+attendee lists by role and session. Resolve identities from the current workbook or event ADO item,
+then verify each address with ADO identity data or the Microsoft directory. Never infer an email
+alias. The standard role mapping, when requested by the user, is:
+
+| Role | Attendance |
+|---|---|
+| Presenter(s) for that session | Required |
+| Technical Director | Required |
+| Executive Producer | Required |
+| Show Owner | Optional |
+| Associate Producer | Optional |
+
+Add any explicitly requested shared mailbox with the attendance type the user specifies. Read the
+Associate Producer from the current event's ADO field when it is not present in the workbook. Show
+the resolved name, address, and attendance type in the preview. If a presenter address is missing,
+recommend waiting to send the complete invitation; adding that presenter later can send another
+meeting update to existing attendees. Do not send a partial invitation unless the user explicitly
+approves that tradeoff.
+
+After approval, fetch each event immediately before updating and use its latest ETag. Patch only
+`attendees` and `responseRequested: true`, preserving all other fields. Stop on the first failure.
+Directly verify the exact recipient set, required/optional types, response tracking, and preserved
+event fields. Exchange may canonicalize aliases to primary SMTP addresses; accept this only when
+the resolved directory identity is the intended person and report the canonical address.
+
+### Enabling Teams on an existing session
+
+For an approved existing Teams NDI session, set `isOnlineMeeting: true`,
+`onlineMeetingProvider: teamsForBusiness`, the complete attendee list, and
+`responseRequested: true` in one update whenever Graph supports it. This avoids an initial
+invitation followed by a second meeting update. Never invent or reuse a join URL. Preserve the
+session's approved Location text unless the user requests a change. Verify that Graph generated a
+non-empty `onlineMeeting.joinUrl`, retained the invitation body, and added Teams join information.
+If Graph requires a second write, stop and preview the extra attendee notification before proceeding.
+
+### Applying Outlook categories
+
+Treat categories as mailbox-local labels. Reuse the exact name of an existing category on the
+shared calendar, preserve any existing categories, and add the requested category at most once.
+If the shared mailbox blocks master-category color reads, use an existing correctly categorized
+event as the reference and state that the color could not be independently verified through Graph.
+Preview the exact session-type scope and exclude other types explicitly. After approval, fetch the
+latest ETag, patch only `categories`, retry a change-key conflict with one fresh read, and verify the
+target and excluded events. A category-only update should not send a meeting update, but still
+requires calendar-write approval.
 
 ## Safety rules
 
@@ -243,18 +337,11 @@ event cannot be identified uniquely.
 - Never add presenters or other attendees to livestream-session appointments unless the user
   explicitly requests and approves them.
 - For tech checks, add only the required and optional attendees shown in the approved preview.
+- Never send an invitation with attendees unless `responseRequested` is explicitly set to `true`.
 - Never create unknown session types.
 - Never substitute one session type's template for another.
 - A changed workbook requires a fresh preview and fresh approval.
 - Do not expose private calendar details while reporting conflict checks.
-
-## Current workbook example
-
-For `MCP Dev Days - 2026-09-09 - ROS.xlsx`, the `LiveShow` table currently contains eight
-qualifying `Teams NDI` rows (Session IDs 100-107), nine skipped `Host Transition` rows, and no
-`In Studio` rows. The sheet date is `2026-09-09`. The user confirmed the event time zone is
-`Pacific Standard Time` on 2026-08-17. This is historical reference data only; never use it for
-a future workbook without rereading that workbook.
 
 ## Example future request
 

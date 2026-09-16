@@ -9,9 +9,10 @@ The asterisks around `AND` are literal because Outlook subjects do not support r
 ## HTML body
 
 ```html
-<p><strong>** This email is generated from a service account that is not regularly monitored. For rescheduling or questions, please email <a href="mailto:v-adunmire@microsoft.com">v-adunmire@microsoft.com</a> **</strong></p>
+<div style="font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#000000;line-height:1.2;">
+<p style="margin:0 0 16px 0;padding:2px 6px;background-color:#d9d9d9;"><strong><em>** This email is generated from a service account that is not regularly monitored. For rescheduling or questions, please email <a href="mailto:v-adunmire@microsoft.com">v-adunmire@microsoft.com</a>. **</em></strong></p>
 
-<p><strong>IMPORTANT INFORMATION - PLEASE READ THOROUGHLY:</strong></p>
+<p style="margin:0 0 4px 0;"><strong>IMPORTANT INFORMATION - PLEASE READ THOROUGHLY:</strong></p>
 <ul>
   <li>This LIVE session will be conducted with a presenter in the DevRel studio space and a presenter on Teams.</li>
   <li>Call Times for Presenters are listed below:
@@ -24,8 +25,8 @@ The asterisks around `AND` are literal because Outlook subjects do not support r
   <li>Please come prepared with your demo, slides, or presentation (if applicable).</li>
 </ul>
 
-<p><strong>Shoot details:</strong></p>
-<table>
+<p style="margin:18px 0 4px 0;color:#2f5597;font-size:14pt;"><strong>Shoot details:</strong></p>
+<table role="presentation" border="1" cellpadding="4" cellspacing="0" style="border-collapse:collapse;border:1px solid #000000;width:804px;max-width:100%;">
   <tr><td><strong>Event</strong></td><td>{{Event Name}}</td></tr>
   <tr><td><strong>Session title</strong></td><td>{{Session Name}}</td></tr>
   <tr><td><strong>Session number</strong></td><td>{{Session ID}}</td></tr>
@@ -33,7 +34,9 @@ The asterisks around `AND` are literal because Outlook subjects do not support r
   <tr><td><strong>In-person call time</strong></td><td>{{Appointment Start Time}}</td></tr>
   <tr><td><strong>Remote presenter(s)</strong></td><td>{{Remote Presenter(s)}}</td></tr>
   <tr><td><strong>Remote call time</strong></td><td>{{Remote Call Time}}</td></tr>
-  <tr><td><strong>Session time</strong></td><td>{{Session Start Time}}</td></tr>
+  <tr><td><strong>Session start time</strong></td><td>{{Session Start Time}}</td></tr>
+  <tr><td><strong>Session end time</strong></td><td>{{Session End Time}}</td></tr>
+  <tr><td><strong>Session length</strong></td><td>{{Session Duration}}</td></tr>
   <tr><td><strong>In-person location</strong></td><td>DevRel Studios - Microsoft Building 25 (15700 NE 39th St, Redmond, WA 98052); 25/1332</td></tr>
   <tr><td><strong>Remote location</strong></td><td>Teams NDI</td></tr>
   <tr><td><strong>Show Owner</strong></td><td>{{Show Owner}}</td></tr>
@@ -53,7 +56,7 @@ The asterisks around `AND` are literal because Outlook subjects do not support r
   <li><a href="https://dev.azure.com/devrel/Studios/_wiki/wikis/Studios.wiki/6314/Speaker-readiness-for-presenters?anchor=live-presenters---remote">Speaker readiness for presenters - Overview</a></li>
 </ul>
 
-<p><strong>Live presenters - remote via Teams:</strong></p>
+<p style="margin:18px 0 4px 0;color:#2f5597;font-size:14pt;"><strong>Live presenters - remote via Teams:</strong></p>
 <ul>
   <li>Join the Teams call 20 minutes ahead of your live session start time. Someone from the production team will be with you shortly to check your screen share/video/audio.</li>
   <li>If multiple presenters, inform the Executive Producer (EP) or Technical Director (TD) who will be speaking first and who will be sharing the presentation and/or demo so we understand the flow of your session.</li>
@@ -65,7 +68,7 @@ The asterisks around `AND` are literal because Outlook subjects do not support r
   <li>When you are finished with your session/Q&amp;A, mute your microphone, keep your camera ON, and do not stop sharing your screen until given the all-clear from the production team. They will let you know when you are clear to exit the Teams call.</li>
 </ul>
 
-<p><strong>Setup instructions (if you plan to share your screen):</strong></p>
+<p style="margin:18px 0 4px 0;color:#2f5597;font-size:14pt;"><strong>Setup instructions (if you plan to share your screen):</strong></p>
 <ul>
   <li>Set your screen resolution to 1920x1080.</li>
   <li>Set your scale to 125%: System &gt; Display &gt; Scale &amp; layout.</li>
@@ -81,7 +84,7 @@ The asterisks around `AND` are literal because Outlook subjects do not support r
   <li>If you are not a Microsoft employee, please sign the <a href="https://aka.ms/releaseforms">release form</a>.</li>
 </ul>
 
-<p><strong>Video &amp; Audio</strong></p>
+<p style="margin:18px 0 4px 0;color:#2f5597;font-size:14pt;"><strong>Video &amp; Audio:</strong></p>
 <p><strong>Set up:</strong></p>
 <ul>
   <li>Choose a quiet location with great internet connectivity, preferably hard wired, free from noise from pets or children.</li>
@@ -112,23 +115,10 @@ The asterisks around `AND` are literal because Outlook subjects do not support r
   <li>If using a mobile device, use something to stabilize it.</li>
 </ul>
 
-<p><strong>Wardrobe Tips</strong></p>
-<p><strong>Don&rsquo;t:</strong></p>
-<ul>
-  <li>Wear large-logo shirts or non-Microsoft logos unless related to your technology topic.</li>
-  <li>Wear shirts with a busy print or tight pattern.</li>
-  <li>Wear solid black, solid white, or any green.</li>
-  <li>Wear hats unless worn for religious observance.</li>
-</ul>
+<p style="margin:18px 0 4px 0;color:#2f5597;font-size:14pt;"><strong>Wardrobe tips</strong></p>
+<p>Avoid large logos, busy or tight patterns, solid black or white, and hats unless worn for religious observance. Wear color, wrinkle-free clothing, and simple jewelry.</p>
 
-<p><strong>Do:</strong></p>
-<ul>
-  <li>Wear color. Muted colors are fine; color is always good on camera.</li>
-  <li>Ensure your clothes are wrinkle free; HD catches everything.</li>
-  <li>Wear simple jewelry, or none. Large jewelry can be distracting and create additional noise.</li>
-</ul>
-
-<p><strong>Directions</strong></p>
+<p style="margin:18px 0 4px 0;color:#2f5597;font-size:14pt;"><strong>Directions:</strong></p>
 <p>
   Microsoft Building 25<br>
   15700 NE 39th St<br>
@@ -142,6 +132,8 @@ The asterisks around `AND` are literal because Outlook subjects do not support r
   <li>The sponsor for reception to contact by email upon your arrival is {{Technical Director}}. They will meet you in the lobby after you are checked in.</li>
   <li>FTEs and vendors can register their vehicles for on-site parking in advance at <a href="https://parking.microsoft.com/">parking.microsoft.com</a>.</li>
 </ul>
+<p style="margin:12px 0 0 0;"><img src="{{Floor Plan Image URL}}" alt="Floor plan showing the DevRel Studios location in Microsoft Building 25" width="640" style="display:block;width:640px;max-width:100%;height:auto;border:0;"></p>
+</div>
 ```
 
 ## Placeholder rules
@@ -151,3 +143,7 @@ The asterisks around `AND` are literal because Outlook subjects do not support r
 - `Appointment Start Time` is 30 minutes before session start.
 - `Remote Call Time` is 20 minutes before session start.
 - Parse `In-Person Presenter(s)` and `Remote Presenter(s)` from the labeled `Presenter(s)` source value according to the skill rules.
+- Apply the inline styles as written; do not replace them with CSS classes or a `<style>` block because
+  Outlook desktop uses the Word HTML rendering engine.
+- Render the floor-plan `<img>` only when `Floor Plan Image URL` is a confirmed HTTPS image URL.
+  Remove the entire containing `<p>` when the URL is unavailable; never send the unresolved placeholder.

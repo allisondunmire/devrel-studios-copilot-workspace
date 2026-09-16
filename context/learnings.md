@@ -8,10 +8,14 @@
 
 ## Workflow Tips
 
+- **Collect external availability in one scheduling time zone** — Ask MVPs to provide broad availability windows between 8:00 AM and 5:00 PM Pacific Time, while separately recording the local time zone they will use during the proposed dates. *Why it matters:* A common scheduling standard simplifies reviewer matching, while the local zone provides a conversion check without relying on fixed UTC offsets that change with daylight saving time.
+- **Keep reusable Forms date-neutral** — Put each rehearsal's eligible date range in the request email instead of hard-coding dates or every hourly slot into the Form. *Why it matters:* The same external form can support multiple rehearsals without becoming long or outdated.
 - **Use Microsoft Lists for the weekly WIP tracker** — The recurring agenda is structured operational data (ADO project, EP, type, recording dates, location, state, and meeting notes), while Work IQ cannot currently read or update the OneNote page. *Why it matters:* A SharePoint-backed List gives each project a stable row, supports filtered meeting views and Power Automate, preserves manual notes in a dedicated field, and can retain clickable ADO links.
 
 ## Tool Tips
 
+- **Refresh Microsoft Forms group views after creating a form** — A newly created group form may not appear until the group page is refreshed with `Ctrl+R`. *Why it matters:* This can look like a lost form even though Forms saved it correctly.
+- **Managed identity still needs calendar authorization** — The Logic App system-assigned managed identity can call Graph without a separate app registration, but `getSchedule` still requires formal application permission review and Exchange mailbox scoping. *Why it matters:* Identity availability does not itself grant calendar access; request least privilege and persist only free/busy status.
 - **Microsoft Scout can prototype the WIP automation** — Internal Scout guidance documents browser control, file and shell operations, Microsoft 365/Work IQ access, and scheduled automations, but a native Power Automate flow-authoring capability was not verified. *Why it matters:* Use Scout for a supervised List and workflow prototype after sign-in, then choose Scout scheduling or translate the proven process into Power Automate.
 
 - **Standard Outlook connector can read the DRStudios shared calendar** — `Get calendar view of events (V3)` successfully queried only `drstudios@microsoft.com`, while the Outlook `Send an HTTP request` action was blocked by DLP with status 442. *Why it matters:* Shared-calendar availability and event creation are possible without the blocked HTTP/Graph connector or personal-calendar access.
