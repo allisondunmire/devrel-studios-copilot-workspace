@@ -132,7 +132,7 @@ The asterisks around `AND` are literal because Outlook subjects do not support r
   <p style="margin:0 0 0 24px;text-indent:-18px;">&#8226;&nbsp;The sponsor for reception to contact by email upon your arrival is {{Technical Director}}. They will meet you in the lobby after you are checked in.</p>
   <p style="margin:0 0 0 24px;text-indent:-18px;">&#8226;&nbsp;FTEs and vendors can register their vehicles for on-site parking in advance at <a href="https://parking.microsoft.com/">parking.microsoft.com</a>.</p>
 
-<p style="margin:12px 0 0 0;"><img src="{{Floor Plan Image URL}}" alt="Floor plan showing the DevRel Studios location in Microsoft Building 25" width="640" style="display:block;width:640px;max-width:100%;height:auto;border:0;"></p>
+{{Floor Plan Image HTML}}
 </div>
 ```
 
@@ -145,5 +145,6 @@ The asterisks around `AND` are literal because Outlook subjects do not support r
 - Parse `In-Person Presenter(s)` and `Remote Presenter(s)` from the labeled `Presenter(s)` source value according to the skill rules.
 - Apply the inline styles as written; do not replace them with CSS classes or a `<style>` block because
   Outlook desktop uses the Word HTML rendering engine.
-- Render the floor-plan `<img>` only when `Floor Plan Image URL` is a confirmed HTTPS image URL.
+- Replace `{{Floor Plan Image HTML}}` with a complete floor-plan image paragraph only when its
+  source is a confirmed HTTPS image URL; otherwise replace it with an empty string.
   Remove the entire containing `<p>` when the URL is unavailable; never send the unresolved placeholder.

@@ -156,9 +156,11 @@ is blank, derive it from the validated session start and end times and identify 
 preview. Never calculate session length from the buffered appointment start time.
 
 `Floor Plan Image URL` is an optional skill-level resource, not required workbook metadata. When a
-confirmed HTTPS image URL is available, render it in `In Studio` and `Hybrid` invitations only.
-Until then, remove the entire floor-plan image paragraph from the rendered HTML. Never leave the
-placeholder in an invitation, invent a URL, or include the floor plan in `Teams NDI` invitations.
+confirmed HTTPS image URL is available, replace `{{Floor Plan Image HTML}}` with the complete image
+paragraph in `In Studio` and `Hybrid` invitations only. Otherwise replace that placeholder with an
+empty string before the HTML reaches Word or Outlook. Never render an `<img>` element with a
+placeholder or empty source: Outlook can turn it into an `image001.png` attachment. Never invent a
+URL or include the floor plan in `Teams NDI` invitations.
 
 ### Tech check templates
 

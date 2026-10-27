@@ -22,6 +22,12 @@
 
 ## Recently Completed
 
+### .NET Conf 2026 Day 2 calendar placeholders
+- **Completed:** 2026-10-27
+- **What:** Created and verified 15 attendee-free DRStudios calendar placeholders from the Day 2 ROS for November 11, 2026.
+- **Result:** Sessions 201-216 except 207 use the Outlook-safe In Studio and Teams NDI templates; Sessions 213-214 link only to Event 221424 because matching Episodes were unavailable.
+- **Follow-up:** Create Session 207 after confirming whether Morten Nielsen and Niels Laute are In Studio or joining through Teams NDI.
+
 ### .NET Conf 2026 Day 1 calendar placeholders
 - **Completed:** 2026-10-27
 - **What:** Created 17 attendee-free DRStudios calendar placeholders from the Day 1 ROS and mapped Sessions 101-117 to their ADO Episodes.

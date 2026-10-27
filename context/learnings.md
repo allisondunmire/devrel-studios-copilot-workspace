@@ -8,6 +8,7 @@
 
 ## Workflow Tips
 
+- **Remove optional image markup before Outlook rendering** — Use an inert HTML-block placeholder and replace it with a complete `<img>` paragraph only after validating an approved HTTPS URL; otherwise replace it with an empty string. *Why it matters:* Outlook can convert unresolved or empty image sources into unintended `image001.png` attachments.
 - **Verify Outlook-rendered invite bodies, not only source HTML** — Outlook desktop's Word renderer can ignore list margins and recreate default spacing, so live-event templates should use zero-margin bullet paragraphs instead of semantic lists and include a visual spot-check for each template type. *Why it matters:* Correct source HTML does not guarantee the final calendar invite will preserve typography and header-to-content spacing.
 - **Collect external availability in one scheduling time zone** — Ask MVPs to provide broad availability windows between 8:00 AM and 5:00 PM Pacific Time, while separately recording the local time zone they will use during the proposed dates. *Why it matters:* A common scheduling standard simplifies reviewer matching, while the local zone provides a conversion check without relying on fixed UTC offsets that change with daylight saving time.
 - **Keep reusable Forms date-neutral** — Put each rehearsal's eligible date range in the request email instead of hard-coding dates or every hourly slot into the Form. *Why it matters:* The same external form can support multiple rehearsals without becoming long or outdated.
