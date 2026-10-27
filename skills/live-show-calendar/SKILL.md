@@ -125,6 +125,31 @@ styles, table attributes, links, and semantic HTML exactly; do not convert the b
 plain text. The inline formatting is intentionally compatible with Outlook desktop's Word HTML
 renderer as well as Outlook on the web.
 
+### Required body formatting
+
+Apply these rules to every livestream-session template and rendered appointment:
+
+- Use Aptos throughout the body, including tables, links, and bullet content.
+- Begin with `For rescheduling or questions, please email drstudios@microsoft.com.` in 10pt.
+  Do not include the former service-account warning.
+- Render blue section headers at 14pt without bold.
+- Put no vertical space between a section header and the table, paragraph, or bullets immediately
+  below it.
+- Use bullet paragraphs with `margin:0`, a hanging indent, and the `&#8226;` character. Do not use
+  semantic `<ul>` or `<li>` elements: Outlook desktop's Word renderer can recreate its default list
+  spacing even when the source HTML sets zero margins.
+- Keep the details table in Aptos and do not allow Outlook's Times New Roman fallback.
+- Do not embed or attach images unless the user explicitly supplies and approves an image.
+
+For in-person content, use this production location in both the body and calendar Location field,
+regardless of the stage value in the ROS:
+
+`DevRel Studios - Microsoft Building 25 (15700 NE 39th St, Redmond, WA 98052); 25/1332`
+
+For Hybrid content, use that address for the in-person location and `Teams NDI` for the remote
+location. For Teams NDI content, use `Teams NDI`. The ROS stage remains production metadata and
+must not replace these attendee-facing locations.
+
 In every livestream-session body, render `Session End Time` in the confirmed event time zone and
 render `Session Length` from the displayed `Session Duration` workbook value. If `Session Duration`
 is blank, derive it from the validated session start and end times and identify it as derived in the
@@ -192,7 +217,7 @@ Use:
 
 - Calendar owner: `drstudios@microsoft.com`
 - Subject and HTML body: the reference template
-- Location: `Stage Location`
+- Location: the attendee-facing location defined under Required body formatting
 - Show as: `busy`
 - Attendees: empty
 - Response requested: `false` only while the event has no attendees
@@ -250,8 +275,20 @@ stop the batch and report exactly which Session IDs succeeded, failed, and were 
 Re-read the DRStudios calendar for the event date and verify each newly created event's subject,
 start, end, time zone, location, attendees, and `responseRequested` value. An attendee-free event
 must have `responseRequested: false`; an event with one or more attendees must have
-`responseRequested: true`. Return a concise result table with the event links. Do not modify the
-source workbook or mark rows as sent.
+`responseRequested: true`.
+
+Also verify the saved, rendered body rather than only the source HTML:
+
+- body content is substantial and contains the expected Event and Episode links;
+- Aptos is used throughout, including the details table, with no Times New Roman fallback;
+- the opening contact note is present at 10pt and the former service-account warning is absent;
+- blue headers are not bold;
+- each header has zero space after it and the following content has zero space before it;
+- bullets are manual bullet paragraphs and no Word list containers remain;
+- no embedded images, content-ID references, or accidental attachments are present.
+
+For a batch, visually spot-check at least one appointment from each template type used. Return a
+concise result table with the event links. Do not modify the source workbook or mark rows as sent.
 
 ## Updating existing appointments
 

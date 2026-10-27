@@ -21,3 +21,9 @@
 ## On Hold
 
 ## Recently Completed
+
+### .NET Conf 2026 Day 1 calendar placeholders
+- **Completed:** 2026-10-27
+- **What:** Created 17 attendee-free DRStudios calendar placeholders from the Day 1 ROS and mapped Sessions 101-117 to their ADO Episodes.
+- **Result:** Full In Studio and Teams NDI bodies use Aptos, 10pt DRStudios contact text, non-bold blue headers, zero-gap bullets, correct Building 25 locations, and no embedded images or attachments.
+- **Follow-up:** Reuse the updated [`skills/live-show-calendar/`](../skills/live-show-calendar/) workflow and visually spot-check one invite per template type.
