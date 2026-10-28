@@ -24,8 +24,8 @@
 
 ### .NET Conf 2026 Day 2 calendar placeholders
 - **Completed:** 2026-10-28
-- **What:** Created and verified all 16 attendee-free DRStudios calendar placeholders from the Day 2 ROS for November 11, 2026.
-- **Result:** Sessions 201-216 use the Outlook-safe In Studio and Teams NDI templates. Session 207 uses Teams NDI for both Morten Nielsen and Niels Laute and links to Episode 250576. The `.NET and Azure` and `.NET and Azure Part 2` invitations link to newly added Episodes 251430 and 251431.
+- **What:** Created and verified all 15 currently qualifying attendee-free DRStudios calendar placeholders from the latest Day 2 ROS for November 11, 2026.
+- **Result:** A 2026-10-28 reconciliation of all 32 Day 1 and Day 2 appointments passed with zero mismatches. Session 202 uses the revised title; Sessions 203 and 206 use In Studio templates and 30-minute buffers; Session 207 uses Teams NDI for both presenters and links to Episode 250576. The `.NET and Azure` invitations link to Episodes 251430 and 251431.
 
 ### .NET Conf 2026 Day 1 calendar placeholders
 - **Completed:** 2026-10-27
