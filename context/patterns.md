@@ -5,6 +5,8 @@
 ## Repeated Workflows
 <!-- Tasks you do more than twice that could become a skill or automation -->
 
+- **Reconcile live-show ROS, calendar, and ADO Episodes** — After schedule or format changes, re-download the current ROS, align attendee-free calendar placeholders, and synchronize Episode production mode, filming location, stage, remote platform, and live recording window. *Why it matters:* The same source changes can leave both Outlook template language and ADO production metadata stale; this is a strong extension candidate for [`skills/live-show-calendar/`](../skills/live-show-calendar/). Flagged 2026-10-28.
+
 ## Friction Points
 <!-- Things that take multiple attempts, require manual steps, or slow you down -->
 

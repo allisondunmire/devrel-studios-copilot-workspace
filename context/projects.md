@@ -25,7 +25,7 @@
 ### .NET Conf 2026 Day 2 calendar placeholders
 - **Completed:** 2026-10-28
 - **What:** Created and verified all 15 currently qualifying attendee-free DRStudios calendar placeholders from the latest Day 2 ROS for November 11, 2026.
-- **Result:** A 2026-10-28 reconciliation of all 32 Day 1 and Day 2 appointments passed with zero mismatches. Session 202 uses the revised title; Sessions 203 and 206 use In Studio templates and 30-minute buffers; Session 207 uses Teams NDI for both presenters and links to Episode 250576. The `.NET and Azure` invitations link to Episodes 251430 and 251431.
+- **Result:** A 2026-10-28 reconciliation of all 32 Day 1 and Day 2 appointments passed with zero mismatches. All 32 ADO Episodes also have verified Live production mode, filming location, generic Stage A for In Studio sessions, Teams NDI settings for remote sessions, and UTC recording windows derived from the ROS live times. Session 202 uses the revised title; Sessions 203 and 206 use In Studio templates and 30-minute buffers; Session 207 uses Teams NDI for both presenters and links to Episode 250576. The `.NET and Azure` invitations link to Episodes 251430 and 251431.
 
 ### .NET Conf 2026 Day 1 calendar placeholders
 - **Completed:** 2026-10-27
