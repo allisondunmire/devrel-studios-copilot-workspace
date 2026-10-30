@@ -11,6 +11,13 @@
 - **Next step:** [what's next]
 - **Notes:** [optional context] -->
 
+### .NET Conf 2026 tech-check follow-up
+- **Status:** all 25 invitations sent and verified on 2026-10-30; awaiting responses and conflict resolution
+- **Due:** tech checks November 6 and 9; live sessions November 10 and 11
+- **What:** 13 Friday and 12 Monday appointments cover 31 live sessions, combining repeat presenters; Scott Hanselman is covered during keynote rehearsal instead.
+- **Next step:** Coordinate flagged availability/travel conflicts, confirm provisional day assignments, and reconcile the rehearsal holds with the requested 2 PM Monday start. Correct the Data Exposed appointments from Stage A to Stage C; they do not block these checks.
+- **Notes:** All checks are 15 minutes, Pacific Time, with lunch 12:30-1 PM. Required: presenters, Matt Scholz, Cameron Tomisser, Allison Dunmire; Chris Sfanos optional. Three Teams checks also include Sara Finkelstein and drstudios1. Every body states attendance is mandatory and directs conflicts immediately to drstudios@microsoft.com. Saved-event data and generated Teams links verified; visual Outlook spot-check blocked by browser sign-in. Existing holds, live-session invites, and ADO items were not changed.
+
 ### Weekly WIP tracker automation
 - **Status:** paused — blocked on Microsoft Scout sign-in
 - **Due:** ongoing
